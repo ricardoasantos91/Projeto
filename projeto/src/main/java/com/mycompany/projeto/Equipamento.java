@@ -1,6 +1,7 @@
 package com.mycompany.projeto;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Equipamento implements Serializable{
   private int id;
@@ -32,4 +33,7 @@ public class Equipamento implements Serializable{
   public void print(){
     System.out.println("ID: " + this.id + " Tipo: " + this.tipo.getNome() + " Data de Inst.: " + this.data_inst);
   }
+  
+  
+  
 }

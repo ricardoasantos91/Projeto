@@ -5,7 +5,8 @@ import java.util.ArrayList;
 
 public class CadastroChamado implements Serializable{
   private List<Chamado> chamados = new ArrayList<>();
-
+  
+  
   public void inserir(Chamado chamado){
     chamados.add(chamado);
   }
@@ -121,5 +122,11 @@ public class CadastroChamado implements Serializable{
     finally{
       return chamadosEncontrados;
     }
+  }
+  
+  
+  public int numChamados(){
+    if (chamados.size() == 0) return 0;
+    return (chamados.get(chamados.size()-1).getId()+1);
   }
 }

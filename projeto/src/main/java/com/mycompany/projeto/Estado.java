@@ -3,10 +3,10 @@ package com.mycompany.projeto;
 import java.io.Serializable;
 
 public enum Estado implements Serializable{
-  EM_ANALISE("Em análise"),
+  EM_ANALISE("Em_analise"),
   ABERTO("Aberto"),
   CANCELADO("Cancelado"),
-  CONCLUIDO("Concluído");
+  CONCLUIDO("Concluido");
   
   private String nome;
 

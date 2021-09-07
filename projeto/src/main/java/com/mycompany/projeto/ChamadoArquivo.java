@@ -28,19 +28,22 @@ public class ChamadoArquivo{
   public static CadastroChamado lerArquivo(File file){
     CadastroChamado chamados = new CadastroChamado();
 
-    try(FileInputStream fileStream = new FileInputStream(file)){
+    try{
+        FileInputStream fileStream = new FileInputStream(file);
             // Creating an object input stream
-            try(ObjectInputStream objStream = new ObjectInputStream(fileStream)){
-                
+            try{
+                ObjectInputStream objStream = new ObjectInputStream(fileStream);
                 try{
                     chamados = (CadastroChamado) objStream.readObject();
                     return chamados;
                 }catch(Exception e){
+                    System.out.println("aqui");
                     e.printStackTrace();
                 }
                     
                 objStream.close();
             }catch(IOException e){
+                System.out.println("aqui2");
                 e.printStackTrace();
             }
             
@@ -52,7 +55,7 @@ public class ChamadoArquivo{
     catch(IOException e){
       e.printStackTrace();
     }
-    return null;
+    return chamados;
   }
 
     

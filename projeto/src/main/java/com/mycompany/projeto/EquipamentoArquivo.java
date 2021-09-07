@@ -52,7 +52,7 @@ public class EquipamentoArquivo{
     catch(IOException e){
       e.printStackTrace();
     }
-    return null;
+    return equipamentos;
   }
 
     

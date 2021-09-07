@@ -12,6 +12,9 @@ public abstract class Pessoa implements Serializable{
 
   private Departamento departamento;
 
+  public Pessoa(){
+      
+  }
   public Pessoa(String nome, String cpf, String data_nasc, String endereco, String email, String telefone, Departamento departamento){
     this.nome = nome;
     this.cpf = cpf;

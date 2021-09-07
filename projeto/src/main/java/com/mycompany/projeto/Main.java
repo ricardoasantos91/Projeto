@@ -5,7 +5,7 @@ public class Main {
     
 
   public static void main(String[] args) {
-    
+
     File pessoaArquivo = new File("PessoaArquivo.bin");
     File equipamentoArquivo = new File("EquipamentoArquivo.bin");
     File chamadoArquivo = new File("ChamadoArquivo.bin");

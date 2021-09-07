@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class CadastroEquipamento implements Serializable{
-  private static List<Equipamento> equipamentos = new ArrayList<>();
+  private List<Equipamento> equipamentos = new ArrayList<>();
 
-  public static void inserir(Equipamento equipamento) throws Exception {
+  public void inserir(Equipamento equipamento) throws Exception {
     int i = 0;
     try{
       buscarPorId(equipamento.getId());
@@ -22,7 +22,7 @@ public class CadastroEquipamento implements Serializable{
     }
   }
 
-  public static Equipamento buscarPorId(int id)throws Exception{
+  public Equipamento buscarPorId(int id)throws Exception{
     for(Equipamento eq : equipamentos){
       if(eq.getId() == id){
         return eq;
@@ -31,11 +31,11 @@ public class CadastroEquipamento implements Serializable{
     throw new Exception("EQUIPAMENTO NÃO EXISTE!");
   }
 
-  public static int numEquipamentos(){
+  public int numEquipamentos(){
     return equipamentos.size();
   }
 
-  public static List<Equipamento> buscarPorTipo(TipoEquipamento tipo)throws Exception{
+  public List<Equipamento> buscarPorTipo(TipoEquipamento tipo)throws Exception{
     List<Equipamento> equipamentosEncontrados = new ArrayList<Equipamento>();
 
     try{
@@ -53,7 +53,7 @@ public class CadastroEquipamento implements Serializable{
     }
   }
 
-  public static void remover(Equipamento equipamento)throws Exception{
+  public void remover(Equipamento equipamento)throws Exception{
     try{
       Equipamento eq = buscarPorId(equipamento.getId());
       equipamentos.remove(eq);

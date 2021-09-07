@@ -13,9 +13,10 @@ public class Chamado implements Serializable{
   private Estado estado;
   private Criticidade criticidade;
   private List<Equipamento> equipamentos;
+  private String descricao;
 
   /*Criar chamado*/
-  public Chamado(int id, String titulo, String data_criacao, String data_modificacao, Servico servico, Atendente atendente, Cliente cliente, Estado estado, Criticidade criticidade, List<Equipamento> equipamentos){
+  public Chamado(int id, String titulo, String data_criacao, String data_modificacao, Servico servico, Atendente atendente, Cliente cliente, Estado estado, Criticidade criticidade, List<Equipamento> equipamentos, String descricao){
     this.id = id;
     this.titulo = titulo;
     this.data_criacao = data_criacao;
@@ -26,6 +27,7 @@ public class Chamado implements Serializable{
     this.estado = estado;
     this.criticidade = criticidade;
     this.equipamentos = equipamentos;
+    this.descricao = descricao;
   }
 
   public int getId(){

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public enum Criticidade implements Serializable{
   BAIXA("Baixa"),
-  MEDIA("Média"),
+  MEDIA("Media"),
   ALTA("Alta"),
   URGENTE("Urgente");
 
