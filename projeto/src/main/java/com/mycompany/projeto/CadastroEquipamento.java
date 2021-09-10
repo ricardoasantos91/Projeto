@@ -24,7 +24,9 @@ public class CadastroEquipamento implements Serializable{
 
   public Equipamento buscarPorId(int id)throws Exception{
     for(Equipamento eq : equipamentos){
-      if(eq.getId() == id){
+      eq.print();
+        if(eq.getId() == id){
+        
         return eq;
       }
     }
@@ -34,7 +36,11 @@ public class CadastroEquipamento implements Serializable{
   public int numEquipamentos(){
     return equipamentos.size();
   }
-
+  
+  public int getNextId(){
+      if(equipamentos.size() == 0) return 1;
+      return equipamentos.get(equipamentos.size()-1).getId()+1;
+  }
   public List<Equipamento> buscarPorTipo(TipoEquipamento tipo)throws Exception{
     List<Equipamento> equipamentosEncontrados = new ArrayList<Equipamento>();
 

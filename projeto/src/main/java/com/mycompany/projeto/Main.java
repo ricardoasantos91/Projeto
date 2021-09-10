@@ -6,12 +6,15 @@ public class Main {
 
   public static void main(String[] args) {
 
-    File pessoaArquivo = new File("PessoaArquivo.bin");
-    File equipamentoArquivo = new File("EquipamentoArquivo.bin");
+    File clienteArquivo = new File("ClienteArquivo.bin");
+    File atendenteArquivo = new File("AtendenteArquivo.bin");
+    File equipamentoArquivo = new File("ChamadoEquipamento.bin");
     File chamadoArquivo = new File("ChamadoArquivo.bin");
 
     
-    CadastroPessoa cadastroPessoa = PessoaArquivo.lerArquivo(pessoaArquivo);
+    CadastroAtendente cadastroAtendente = AtendenteArquivo.lerArquivo(atendenteArquivo);
+    CadastroCliente cadastroCliente = ClienteArquivo.lerArquivo(clienteArquivo);
+    
     CadastroEquipamento cadastroEquipamento = EquipamentoArquivo.lerArquivo(equipamentoArquivo);
     CadastroChamado cadastroChamado = ChamadoArquivo.lerArquivo(chamadoArquivo);
     
@@ -20,7 +23,7 @@ public class Main {
     //Pessoa pessoa = cadastroPessoa.buscarPorCpf("123");
     //pessoa.print();
     try{
-      Tela.exibirMenu(cadastroPessoa,cadastroChamado,cadastroEquipamento);
+      Tela.exibirMenu(cadastroCliente, cadastroAtendente ,cadastroChamado,cadastroEquipamento);
     }
     catch(Exception e){
         e.printStackTrace();

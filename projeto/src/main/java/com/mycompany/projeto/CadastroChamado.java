@@ -30,7 +30,7 @@ public class CadastroChamado implements Serializable{
     }
   }
 
-  public List<Chamado> buscarPorCliente(CadastroPessoa cadastro, Cliente cliente)throws Exception{
+  public List<Chamado> buscarPorCliente(CadastroCliente cadastro, Cliente cliente)throws Exception{
     List<Chamado> chamadosEncontrados = new ArrayList<Chamado>();
 
     try{
@@ -50,7 +50,7 @@ public class CadastroChamado implements Serializable{
     }
   }
 
-  public List<Chamado> buscarPorAtendente(CadastroPessoa cadastro, Atendente atendente)throws Exception{
+  public List<Chamado> buscarPorAtendente(CadastroAtendente cadastro, Atendente atendente)throws Exception{
     List<Chamado> chamadosEncontrados = new ArrayList<Chamado>();
 
     try{
