@@ -37,7 +37,9 @@ public class Chamado implements Serializable{
     this.equipamentos = equipamentos;
     this.descricao = descricao;
   }
-
+  public Chamado(){
+      
+  }
   public int getId(){
     return this.id;
   }

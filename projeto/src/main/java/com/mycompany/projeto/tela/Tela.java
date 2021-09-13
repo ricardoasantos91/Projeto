@@ -139,7 +139,20 @@ public class Tela{
       case 2:
           exibirMenuTratarChamado(cadastroCliente, cadastroAtendente, cadastroChamado, cadastroEquipamento, 0);
       case 3:
-          exibirMenuBuscaChamado(cadastroCliente, cadastroAtendente, cadastroChamado, cadastroEquipamento);
+          System.out.println("Tipo de consulta:");
+          System.out.println("1 - Por ID");
+          System.out.println("2 - Por Cliente");
+          int menu_chamado;
+          
+          menu_chamado = scan.nextInt();
+          
+          switch(menu_chamado){
+              case 1:
+                  exibirMenuBuscaChamado(cadastroCliente, cadastroAtendente, cadastroChamado, cadastroEquipamento);
+              case 2:
+                  buscarChamadoPorCliente(cadastroCliente, cadastroAtendente, cadastroChamado, cadastroEquipamento);
+          }
+          
       case 4:
         exibirMenuAdministracao(cadastroCliente, cadastroAtendente, cadastroChamado, cadastroEquipamento);
       case 5:
@@ -797,6 +810,76 @@ public class Tela{
       
       
       
+  }
+  
+  
+  public static void buscarChamadoPorCliente(CadastroCliente cadastroCliente, CadastroAtendente cadastroAtendente, CadastroChamado cadastroChamado, CadastroEquipamento cadastroEquipamento){
+      Scanner scan = new Scanner(System.in);
+      scan.useDelimiter("\n");
+      List<Chamado> chamados = new ArrayList();
+      System.out.println("Digite o cpf do cliente");
+      String cpf = receberCPF();
+      Chamado chamado_atual = new Chamado();
+      int id_chamado;
+      Cliente cliente = new Cliente();
+      try{
+          cliente = cadastroCliente.buscarPorCpf(cpf);
+      }catch(Exception e){
+          System.out.println("Cliente não existe na base de dados.");
+          exibirMenu(cadastroCliente, cadastroAtendente, cadastroChamado, cadastroEquipamento);
+      }
+      try{
+          chamados = cadastroChamado.buscarPorCliente(cadastroCliente, cliente);
+      }catch(Exception e2){
+          System.out.println("Não há chamados.");
+      }
+      if(chamados.size() > 0){
+          int n;
+          int i;
+          n = 0;
+          i = 0;
+          for(Chamado chamado: chamados){
+              System.out.println(i + ": Data de criação: " + chamado.getDataCriacao() + " Estado: " + chamado.getEstado().getNome());
+              i++;
+          }
+          
+          System.out.println("Deseja acessar um dos chamados? 1 - Sim, Outra tecla - Não");
+          n = scan.nextInt();
+          
+          
+          if (n == 1){
+              while(true){
+                System.out.println("Digite o número do chamado.");
+                n = scan.nextInt();
+                if(n >= 0 && n < i){
+                    chamado_atual = chamados.get(n);
+                    
+                    id_chamado = chamado_atual.getId();
+                    break;
+                }else{
+                    System.out.println("Chamado inexistente, tente novamente");
+                }
+              }
+           System.out.println("Deseja visualiza-lo ou edita-lo? 1 - Visualizar, Outra tecla - Editar");
+           n = scan.nextInt();
+           
+           if(n == 1){
+               chamado_atual.printChamado();
+               exibirMenu(cadastroCliente, cadastroAtendente, cadastroChamado, cadastroEquipamento);
+           }else{
+               exibirMenuTratarChamado(cadastroCliente, cadastroAtendente, cadastroChamado, cadastroEquipamento, id_chamado);
+           }
+          }
+          
+          
+          
+          
+          
+          
+          
+      } 
+      exibirMenu(cadastroCliente, cadastroAtendente, cadastroChamado, cadastroEquipamento);
+              
   }
   
   public static List<Equipamento> receberEquipamentosChamado(CadastroEquipamento cadastroEquipamento){
