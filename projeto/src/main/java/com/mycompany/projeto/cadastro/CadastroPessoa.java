@@ -10,11 +10,11 @@ public class CadastroPessoa implements Serializable{
   public void inserir(Pessoa pessoa) throws Exception {
     int i = 0;
     try{
-        System.out.println("CARALHO2");
+        
       buscarPorCpf(pessoa.getCpf());
     }
     catch(Exception e){
-      System.out.println("asaasss");
+      
       pessoas.add(pessoa);
 
       i = 1;

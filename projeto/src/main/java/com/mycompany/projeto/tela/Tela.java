@@ -38,7 +38,8 @@ public class Tela{
     System.out.println("2 - Tratar um chamado");
     System.out.println("3 - Consultar chamado");
     System.out.println("4 - Administração");
-    System.out.println("5 - Sair");
+    System.out.println("5 - Relatório");
+    System.out.println("6 - Sair");
 
     String cpfB;
     int opcao = scan.nextInt();
@@ -142,6 +143,25 @@ public class Tela{
       case 4:
         exibirMenuAdministracao(cadastroCliente, cadastroAtendente, cadastroChamado, cadastroEquipamento);
       case 5:
+          Estado[] estados = Estado.values();
+          List<Chamado> chamado_estados = new ArrayList();
+          for(Estado estado_atual: estados){
+              try{
+                  chamado_estados = cadastroChamado.buscarPorEstado(estado_atual);
+                  System.out.println("Estado: " + estado_atual.getNome() + " Número de chamados: " + chamado_estados.size());
+                  
+                  for(Chamado chamado_atual:chamado_estados){
+                    
+                      System.out.println("ID: " + chamado_atual.getId() + " Data de criação: " + chamado_atual.getDataCriacao() + " Nome do cliente: " + chamado_atual.getCliente().getNome());
+                  }
+              }catch(Exception ex){
+                  System.out.println("Estado: " + estado_atual.getNome() + " Número de chamados: " + chamado_estados.size());
+                  
+              }
+ 
+          }
+          exibirMenu(cadastroCliente, cadastroAtendente, cadastroChamado, cadastroEquipamento);
+      case 6:
         ClienteArquivo.escreverArquivo(cadastroCliente);
         AtendenteArquivo.escreverArquivo(cadastroAtendente);
         ChamadoArquivo.escreverArquivo(cadastroChamado);
@@ -259,7 +279,7 @@ public class Tela{
           cadastroCliente.inserir(cliente);
         }
         catch(Exception e){
-            System.out.println("erro");
+            System.out.println("Cliente já existe");
         }
         
         exibirMenuAdministracao(cadastroCliente, cadastroAtendente, cadastroChamado, cadastroEquipamento);
@@ -270,7 +290,7 @@ public class Tela{
           cadastroAtendente.inserir(atendente);
         }
         catch(Exception e){
-
+            System.out.println("Atendente já existe");
         }
         exibirMenuAdministracao(cadastroCliente, cadastroAtendente, cadastroChamado, cadastroEquipamento);
       case 3:
@@ -417,7 +437,7 @@ public class Tela{
 
     System.out.println("Insira o CPF:");
     String cpf = receberCPF();
-
+    
     System.out.println("Insira a data de nascimento:");
     String data = receberData();
 

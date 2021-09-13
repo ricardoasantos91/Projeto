@@ -120,6 +120,10 @@ public class Chamado implements Serializable{
     return this.estado;
   }
 
+  public String getDataCriacao(){
+      return this.data_criacao;
+  }
+  
   public Criticidade getCriticidade(){
     return this.criticidade;
   }

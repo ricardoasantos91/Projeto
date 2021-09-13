@@ -134,7 +134,7 @@ public class CadastroChamado implements Serializable{
   
   
   public int numChamados(){
-    if (chamados.size() == 0) return 0;
+    if (chamados.size() == 0) return 1;
     return (chamados.get(chamados.size()-1).getId()+1);
   }
 }
